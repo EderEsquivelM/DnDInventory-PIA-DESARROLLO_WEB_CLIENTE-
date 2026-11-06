@@ -22,11 +22,11 @@ El sistema está diseñado específicamente para **Dungeon Masters (DMs)**.
 - **Regla para Copilot:** Cuando generes componentes (cartas, modales, fondos), utiliza texturas sutiles, tipografías con serifa para títulos (estilo fantasía/libro) y sans-serif legibles para descripciones largas. Usa bordes y sombras que evoquen páginas o pergaminos sin sacrificar el rendimiento web.
 
 ## Sistema de Diseño: Paleta de Colores
-Utiliza estrictamente los siguientes códigos HEX para el estilizado. Cuando generes código CSS o utilidades (ej. Tailwind), mapea los estilos a estas variables:
+Utiliza estrictamente los siguientes códigos HEX. Es CRÍTICO respetar la jerarquía de estas variables CSS y no invertirlas:
 
-- `--color-1`: `#FF6A52` (Acento vibrante / Alertas / Botones de acción)
-- `--color-2`: `#38040E` (Tonos oscuros cálidos / Sombras profundas / Fondos secundarios)
-- `--color-3`: `#23062E` (Tonos oscuros fríos / Contrastes de texto)
-- `--color-4`: `#010101` (Texto principal oscuro / Bordes fuertes)
-- `--color-5`: `#F4EADE` (Fondo principal / Tono de página de libro o pergamino)
-- `--color-6`: `#A00008` (Peligro / Elementos de combate / Títulos destacados)
+- `--color-1`: `#151515` (Fondo oscuro principal de la app / Fondo de inputs)
+- `--color-2`: `#262626` (Fondo secundario / Tarjetas de ítems / Paneles / Modales)
+- `--color-3`: `#EAEAEA` (Texto base claro / Descripciones / Alta legibilidad sobre fondos oscuros)
+- `--color-4`: `#C65445` (Rojo teja / Acento principal / Títulos destacados / Botones de acción / Bordes de inputs)
+- `--color-5`: (Peligro / Alertas / Deudas - ESTRICTAMENTE prohibido usarlo para fondos generales)
+- `--color-6`: (Éxito / Acciones completadas - ESTRICTAMENTE prohibido usarlo para bordes decorativos o separadores generales)

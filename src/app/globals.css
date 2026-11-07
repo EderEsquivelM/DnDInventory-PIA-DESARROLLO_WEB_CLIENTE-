@@ -247,9 +247,30 @@ h3,
 .filter-actions {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
   margin-top: 1.25rem;
   padding-top: 1rem;
   border-top: 1px solid var(--color-1);
+}
+
+.apply-filters-button {
+  padding: .7rem 1rem;
+  color: var(--color-1);
+  background-color: var(--color-4);
+  border: 0;
+  font-family: 'Crimson Text', Georgia, serif;
+  font-variant: small-caps;
+  letter-spacing: .08em;
+  cursor: pointer;
+}
+
+.apply-filters-button:hover,
+.apply-filters-button:focus-visible {
+  background-color: var(--color-3);
+  color: var(--color-1);
+  outline: 2px solid var(--color-4);
+  outline-offset: 2px;
 }
 
 .solid-button {
@@ -706,6 +727,11 @@ h3,
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .apply-filters-button {
+    width: 100%;
+    margin-top: 1.5rem;
   }
 }
 

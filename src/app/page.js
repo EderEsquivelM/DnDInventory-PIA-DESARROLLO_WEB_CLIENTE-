@@ -13,6 +13,15 @@ export default function Home() {
     const [minAc, setMinAc] = useState('');
     const [noStealthDis, setNoStealthDis] = useState(false);
     const [dmgType, setDmgType] = useState('');
+    const [appliedFilters, setAppliedFilters] = useState({
+        categoria: '',
+        subCategoria: '',
+        maxPrice: '',
+        maxWeight: '',
+        minAc: '',
+        noStealthDis: false,
+        dmgType: ''
+    });
 
     const resetFilters = () => {
         setCategoria('');
@@ -22,30 +31,51 @@ export default function Home() {
         setMinAc('');
         setNoStealthDis(false);
         setDmgType('');
+        setAppliedFilters({
+            categoria: '',
+            subCategoria: '',
+            maxPrice: '',
+            maxWeight: '',
+            minAc: '',
+            noStealthDis: false,
+            dmgType: ''
+        });
+    };
+
+    const aplicarFiltros = () => {
+        setAppliedFilters({
+            categoria,
+            subCategoria,
+            maxPrice,
+            maxWeight,
+            minAc,
+            noStealthDis,
+            dmgType
+        });
     };
 
     const filteredItems = useMemo(() => {
         return mockItems.filter(item => {
-            if (categoria && item.category !== categoria) return false;
-            if (subCategoria && item.subcategory !== subCategoria) return false;
-            if (maxWeight && item.weight > parseFloat(maxWeight)) return false;
+            if (appliedFilters.categoria && item.category !== appliedFilters.categoria) return false;
+            if (appliedFilters.subCategoria && item.subcategory !== appliedFilters.subCategoria) return false;
+            if (appliedFilters.maxWeight && item.weight > parseFloat(appliedFilters.maxWeight)) return false;
             
-            if (maxPrice) {
+            if (appliedFilters.maxPrice) {
                 const itemGoldValue = (item.price.platino * 10) + item.price.oro + (item.price.plata / 10) + (item.price.bronce / 100);
-                if (itemGoldValue > parseFloat(maxPrice)) return false;
+                if (itemGoldValue > parseFloat(appliedFilters.maxPrice)) return false;
             }
             
-            if (categoria === 'armor') {
-                if (minAc && item.armor_class < parseInt(minAc)) return false;
-                if (noStealthDis && item.stealth_disadvantage === true) return false;
+            if (appliedFilters.categoria === 'armor') {
+                if (appliedFilters.minAc && item.armor_class < parseInt(appliedFilters.minAc)) return false;
+                if (appliedFilters.noStealthDis && item.stealth_disadvantage === true) return false;
             }
-            if (categoria === 'weapons') {
-                if (dmgType && item.damage_type !== dmgType) return false;
+            if (appliedFilters.categoria === 'weapons') {
+                if (appliedFilters.dmgType && item.damage_type !== appliedFilters.dmgType) return false;
             }
             
             return true;
         });
-    }, [categoria, subCategoria, maxPrice, maxWeight, minAc, noStealthDis, dmgType]);
+    }, [appliedFilters]);
 
     return (
         <main className="page-shell">
@@ -58,6 +88,7 @@ export default function Home() {
                 noStealthDis={noStealthDis} setNoStealthDis={setNoStealthDis}
                 dmgType={dmgType} setDmgType={setDmgType}
                 resetFilters={resetFilters}
+                aplicarFiltros={aplicarFiltros}
             />
 
             <section>

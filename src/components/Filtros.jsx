@@ -5,7 +5,7 @@ export default function FiltrosRitual({
     categoria, setCategoria, subCategoria, setSubCategoria,
     maxPrice, setMaxPrice, maxWeight, setMaxWeight,
     minAc, setMinAc, noStealthDis, setNoStealthDis,
-    dmgType, setDmgType, resetFilters
+    dmgType, setDmgType, resetFilters, aplicarFiltros
 }) {
     const [isExpanded, setIsExpanded] = useState(false);
 
@@ -26,7 +26,10 @@ export default function FiltrosRitual({
                     {categoria === 'armor' && <><label className="filter-field"><span className="filter-label">Defensa (AC) Mínima</span><input type="number" placeholder="Ej. 14" value={minAc} onChange={(e) => setMinAc(e.target.value)} /></label><label className="check-field"><input type="checkbox" checked={noStealthDis} onChange={(e) => setNoStealthDis(e.target.checked)} /> Favorece Sigilo (Sin penalización)</label></>}
                     {categoria === 'weapons' && <label className="filter-field"><span className="filter-label">Tipo de Estrago</span><select value={dmgType} onChange={(e) => setDmgType(e.target.value)}><option value="">Cualquier tipo...</option><option value="slashing">Cortante</option><option value="piercing">Perforante</option><option value="bludgeoning">Contundente</option></select></label>}
                 </div>}
-                <div className="filter-actions"><button className="solid-button secondary" onClick={resetFilters}>Disipar Filtros</button></div>
+                <div className="filter-actions">
+                    <button type="button" className="solid-button secondary" onClick={resetFilters}>Disipar Filtros</button>
+                    <button type="button" className="apply-filters-button" onClick={aplicarFiltros}>Buscar</button>
+                </div>
             </div>
         </section>
     );

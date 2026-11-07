@@ -48,7 +48,7 @@ export default function Home() {
     }, [categoria, subCategoria, maxPrice, maxWeight, minAc, noStealthDis, dmgType]);
 
     return (
-        <main className="flex-grow p-4 md:p-8 relative max-w-7xl mx-auto w-full animate-[fadeIn_0.5s_ease-out]">
+        <main className="page-shell">
             <FiltrosRitual 
                 categoria={categoria} setCategoria={setCategoria}
                 subCategoria={subCategoria} setSubCategoria={setSubCategoria}
@@ -61,9 +61,9 @@ export default function Home() {
             />
 
             <section>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div className="item-grid">
                     {filteredItems.length === 0 ? (
-                        <div className="col-span-full p-12 text-center text-c6 font-fantasy text-xl glass-panel rounded-xl border border-c6/50">
+                        <div className="empty-state">
                             El oráculo no encuentra reliquias con estas condiciones.
                         </div>
                     ) : (
